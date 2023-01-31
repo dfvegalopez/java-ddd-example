@@ -15,8 +15,10 @@ public final class Video extends AggregateRoot {
         var video = new Video(title, description);
 
         var videoCreated = new VideoPublished(title.value(), description.value());
+        var videoSocialMediaCreated = new VideoSocialMediaPublished(title.value(), description.value());
 
         video.record(videoCreated);
+        video.recordSocialMediaEvent(videoSocialMediaCreated);
 
         return video;
     }

@@ -1,21 +1,19 @@
 package tv.codely.mooc.video.domain;
 
-import tv.codely.shared.domain.DomainEvent;
+import tv.codely.shared.domain.SocialMediaEvent;
 
-public final class VideoPublished implements DomainEvent {
+public final class VideoSocialMediaPublished implements SocialMediaEvent {
 
     private static final String FULL_QUALIFIED_EVENT_NAME = "codelytv.video.video.event.1.video.published";
     private final String title;
     private final String description;
 
-    public VideoPublished(String title, String description) {
+    public VideoSocialMediaPublished(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public String fullQualifiedEventName() {
-        return FULL_QUALIFIED_EVENT_NAME;
-    }
+    public String socialMediaEventName() {  return FULL_QUALIFIED_EVENT_NAME; }
 
     public String title() {
         return title;
@@ -30,7 +28,7 @@ public final class VideoPublished implements DomainEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VideoPublished that = (VideoPublished) o;
+        VideoSocialMediaPublished that = (VideoSocialMediaPublished) o;
 
         if (!title.equals(that.title)) return false;
         return description.equals(that.description);
