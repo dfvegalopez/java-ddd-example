@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import tv.codely.mooc.video.domain.VideoPublished;
 import tv.codely.mooc.video.domain.VideoSocialMediaPublished;
 import tv.codely.shared.domain.EventBus;
-import tv.codely.shared.domain.SocialMediaBus;
+import tv.codely.shared.domain.SocialMedia;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ final class VideoPublisherShould {
     @Test
     void publish_the_video_published_domain_event() {
         final EventBus eventBus = mock(EventBus.class);
-        final SocialMediaBus socialMediaBus = mock(SocialMediaBus.class);
-        final var videoPublisher = new VideoPublisher(eventBus, socialMediaBus);
+        final SocialMedia socialMedia = mock(SocialMedia.class);
+        final var videoPublisher = new VideoPublisher(eventBus, socialMedia);
 
         final var videoTitle = "\uD83C\uDF89 New YouTube.com/CodelyTV video title";
         final var videoDescription = "This should be the video description \uD83D\uDE42";
@@ -27,7 +27,7 @@ final class VideoPublisherShould {
         final var expectedVideoSocialMediaCreated = new VideoSocialMediaPublished(videoTitle, videoDescription);
 
         verify(eventBus).publish(List.of(expectedVideoCreated));
-        verify(socialMediaBus).publish(List.of(expectedVideoSocialMediaCreated));
+        verify(socialMedia).publish(List.of(expectedVideoSocialMediaCreated));
     }
 
 }

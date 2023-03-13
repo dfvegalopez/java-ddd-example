@@ -4,7 +4,7 @@ import tv.codely.mooc.notification.application.create.SendPushToSubscribersOnVid
 import tv.codely.mooc.video.application.publish.VideoPublisher;
 import tv.codely.shared.application.DomainEventSubscriber;
 import tv.codely.shared.domain.EventBus;
-import tv.codely.shared.domain.SocialMediaBus;
+import tv.codely.shared.domain.SocialMedia;
 import tv.codely.shared.infrastructure.bus.ReactorEventBus;
 import tv.codely.shared.infrastructure.ExternalApi.TwitterAPI;
 
@@ -16,8 +16,8 @@ public class VideoPublisherCliController {
             new SendPushToSubscribersOnVideoPublished()
         );
         final EventBus eventBus = new ReactorEventBus(subscribers);
-        final SocialMediaBus socialMediaBus = new TwitterAPI();
-        final var videoPublisher = new VideoPublisher(eventBus, socialMediaBus);
+        final SocialMedia socialMedia = new TwitterAPI();
+        final var videoPublisher = new VideoPublisher(eventBus, socialMedia);
 
         final var videoTitle = "\uD83C\uDF89 New YouTube.com/CodelyTV video title";
         final var videoDescription = "This should be the video description \uD83D\uDE42";

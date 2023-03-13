@@ -15,14 +15,6 @@ public final class VideoSocialMediaPublished implements SocialMediaEvent {
 
     public String socialMediaEventName() {  return FULL_QUALIFIED_EVENT_NAME; }
 
-    public String title() {
-        return title;
-    }
-
-    public String description() {
-        return description;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
