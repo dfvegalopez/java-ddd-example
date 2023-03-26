@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface VideoRepository {
     void save(Video video);
     List<Video> getAll();
-    Optional<Video> findById(VideoId videoId);
+    Video findById(VideoId videoId);
     void update(Video video);
 }

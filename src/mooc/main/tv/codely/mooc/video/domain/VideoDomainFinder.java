@@ -9,9 +9,9 @@ public class VideoDomainFinder {
         this.videoRepository = videoRepository;
     }
 
-    public Optional<Video> findById(VideoId videoId) throws VideoNotFoundException {
+    public Video findById(VideoId videoId) throws VideoNotFoundException {
         var video =  this.videoRepository.findById(videoId);
-        if (video.isEmpty()) throw new VideoNotFoundException("video no encontrado");
+        if (video == null) throw new VideoNotFoundException("video no encontrado");
         return video;
     }
 }

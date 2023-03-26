@@ -8,27 +8,28 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class VideoRepositoryMemory implements VideoRepository {
+public class VideoRepositoryStubs implements VideoRepository {
+    private List<Video> videoList = new LinkedList<>();
+
     @Override
     public void save(Video video) {
-        System.out.println("se persiste el video");
+        videoList.add(video);
     }
 
     @Override
     public List<Video> getAll() {
-        System.out.println("se obtiene un listado de todos los videos ");
-        List<Video> videoList = new LinkedList<Video>();
-        return videoList;
-    }
-
-    @Override
-    public Video findById(VideoId videoId) {
-        System.out.println("se obtiene un video por id");
         return null;
     }
 
     @Override
+    public Video findById(VideoId videoId) {
+        return this.videoList.stream()
+                .filter(video -> video.getVideoId().value().equals(videoId.value()))
+                .findAny().get();
+    }
+
+    @Override
     public void update(Video video) {
-        System.out.println("se actualiza el video");
+
     }
 }

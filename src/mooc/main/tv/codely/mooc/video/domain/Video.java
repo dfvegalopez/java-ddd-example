@@ -2,6 +2,8 @@ package tv.codely.mooc.video.domain;
 
 import tv.codely.shared.domain.AggregateRoot;
 
+import java.util.Objects;
+
 public final class Video extends AggregateRoot {
     private VideoTitle title;
     private VideoDescription description;
@@ -46,5 +48,18 @@ public final class Video extends AggregateRoot {
 
     public VideoId getVideoId() {
         return videoId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Video video = (Video) o;
+        return Objects.equals(title, video.title) && Objects.equals(description, video.description) && Objects.equals(videoId, video.videoId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, description, videoId);
     }
 }

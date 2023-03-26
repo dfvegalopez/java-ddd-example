@@ -14,8 +14,8 @@ public class VideoUpdater {
     }
 
     public void update(VideoId videoId, VideoTitle videoTitle, VideoDescription videoDescription) throws VideoNotFoundException {
-        Optional<Video> video = this.videoDomainFinder.findById(videoId);
-        video.get().update(videoTitle, videoDescription);
-        this.videoRepository.update(video.get());
+        Video video = this.videoDomainFinder.findById(videoId);
+        video.update(videoTitle, videoDescription);
+        this.videoRepository.update(video);
     }
 }

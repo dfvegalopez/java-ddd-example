@@ -29,7 +29,7 @@ class VideoUpdaterTest {
         final var videoId = new VideoId( "1");
 
         final var createdVideo = videoCreator.create(videoId, videoTitle, videoDescription);
-        when(videoRepository.findById(videoId)).thenReturn(Optional.of(createdVideo));
+        when(videoRepository.findById(videoId)).thenReturn(createdVideo);
         videoUpdater.update(videoId, updateVideoTitle, videoDescription);
         Assert.isTrue(createdVideo.getTitle().equals(updateVideoTitle));
     }
@@ -48,7 +48,7 @@ class VideoUpdaterTest {
 
         final var createdVideo = videoCreator.create(videoId, videoTitle, videoDescription);
         final var updateVideoTitle = new VideoTitle("updateVideoTitle");
-        when(videoRepository.findById(videoId)).thenReturn(Optional.of(createdVideo));
+        when(videoRepository.findById(videoId)).thenReturn(createdVideo);
         VideoNotFoundException exception = assertThrows(VideoNotFoundException.class, () -> {
             videoUpdater.update(invalidVideoId, updateVideoTitle, videoDescription);
         });

@@ -11,7 +11,7 @@ public class VideoFinder {
         this.videoDomainFinder = new VideoDomainFinder(videoRepository);
     }
 
-    public Optional<Video> findById(VideoId id) throws VideoNotFoundException {
+    public Video findById(VideoId id) throws VideoNotFoundException {
         return this.videoDomainFinder.findById(id);
     }
 }
